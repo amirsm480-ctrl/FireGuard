@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "384241337823",
+    "project_id": "fireguard-d6283",
+    "storage_bucket": "fireguard-d6283.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384241337823:android:ea7c89b851055a7bf4f06a",
+        "android_client_info": {
+          "package_name": "com.fireguard.fireguard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS0P-T3HigZCcht4PpHFFPfnw0nQWSqPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

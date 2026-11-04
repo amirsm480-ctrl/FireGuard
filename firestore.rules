@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owns(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    match /users/{userId} {
+      allow read: if owns(userId);
+      allow create, update: if owns(userId)
+        && request.resource.data.keys().hasOnly(['lastRobotId'])
+        && request.resource.data.lastRobotId is string
+        && request.resource.data.lastRobotId.size() <= 128;
+      match /robots/{robotId}/{collection}/{documentId} {
+        allow read: if owns(userId) && collection in ['samples', 'events'];
+        allow create: if owns(userId) && collection in ['samples', 'events'];
+        // Telemetry and events are append-only from the mobile app.
+        allow update, delete: if false;
+      }
+    }
+  }
+}
