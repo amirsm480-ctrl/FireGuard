@@ -30,7 +30,9 @@ class DashboardPage extends StatelessWidget {
         LayoutBuilder(
           builder: (context, box) {
             final width = box.maxWidth;
-            final count = width >= 730 ? 4 : 2;
+            if (width <= 0) return const SizedBox.shrink();
+
+            final count = width >= 730 ? 4 : (width >= 320 ? 2 : 1);
             final tileWidth = (width - (count - 1) * 14) / count;
             return Wrap(
               spacing: 14,
